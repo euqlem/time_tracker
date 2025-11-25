@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CDX Laboratory Product Center</title>
+  <link rel="stylesheet" href="ite.css" />
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <script src="ite.js" defer></script>
+</head>
+
+<body>
+<header class="header">
+  <img src="cdx.png" alt="CDX Logo" class="logo" />
+  <h1>CDX Laboratory Product Center</h1>
+  <button id="themeToggleBtn" class="btn toggle-btn">🌙 Dark Mode</button>
+</header>
+
+<main>
+  <div class="parent">
+
+    <!-- TIME TRACKER -->
+    <section class="card div1">
+      <h2>Employee Time Tracker</h2>
+      <p class="subtitle">Record your daily time-in and time-out</p>
+      <input type="text" id="nameInput" placeholder="Enter your name" />
+      <button id="timeInBtn" class="btn">Time In</button>
+      <button id="timeOutBtn" class="btn">Time Out</button>
+    </section>
+
+    <!-- ATTENDANCE -->
+    <section class="card div2">
+      <h2>Attendance History</h2>
+      <input type="date" id="attendanceDate" />
+      <button id="viewHistoryBtn" class="btn">View History</button>
+      <button id="deleteDataBtn" class="btn">Delete Data</button>
+
+      <table id="attendanceTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Action</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <button id="downloadAttendancePDF" class="btn">📄 Generate Attendance Report (PDF)</button>
+
+    <!-- BUSINESS ITINERARY -->
+    <section class="card div3">
+      <h2>Business Trips Itinerary</h2>
+
+      <input type="text" id="itineraryName" placeholder="Name" />
+      <input type="date" id="itineraryDate" />
+      <input type="time" id="itineraryTime" />
+      <input type="text" id="itineraryTask" placeholder="Activity / Task" />
+      <input type="text" id="itineraryLocation" placeholder="Location (optional)" />
+
+      <label>Attach Photo</label>
+      <input type="file" id="itineraryPhoto" accept="image/*" />
+
+      <img id="photoPreview" style="display:none;width:100px;height:100px;border-radius:8px;margin-top:8px;object-fit:cover;">
+      <p id="fileNameLabel" style="font-size:13px;color:gray;margin-top:4px;"></p>
+
+      <button id="addItineraryBtn" class="btn">Add Itinerary</button>
+
+      <h2>Itinerary History</h2>
+      <input type="date" id="viewItineraryDate" />
+      <button id="viewItineraryBtn" class="btn">View Itinerary</button>
+
+      <table id="itineraryTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Task</th>
+            <th>Location</th>
+            <th>Photo</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <button id="downloadItineraryPDF" class="btn">📄 Generate Itinerary Report (PDF)</button>
+
+  </div>
+</main>
+
+<div id="imageModal" class="image-modal">
+  <span class="close-modal">&times;</span>
+  <img class="modal-content" id="modalImage" />
+</div>
+
+</body>
+</html>
